@@ -9,23 +9,23 @@ let blob3 = {
 
   // Visual properties
   r: 26, // Base radius
-  points: 48, // Number of points used to draw the blob
-  wobble: 7, // Edge deformation amount
-  wobbleFreq: 0.9,
+  points: 32, // Number of points used to draw the blob
+  wobble: 14, // Edge deformation amount
+  wobbleFreq: 2,
 
   // Time values for breathing animation
   t: 0,
-  tSpeed: 0.01,
+  tSpeed: 0.04,
 
   // Physics: velocity
   vx: 0, // Horizontal velocity
   vy: 0, // Vertical velocity
 
   // Movement tuning
-  accel: 0.55, // Horizontal acceleration
-  maxRun: 4.0, // Maximum horizontal speed
+  accel: 4.4, // Horizontal acceleration
+  maxRun: 10.0, // Maximum horizontal speed
   gravity: 0.65, // Downward force
-  jumpV: -11.0, // Initial jump impulse
+  jumpV: -18.0, // Initial jump impulse
 
   // State
   onGround: false, // True when standing on a platform
@@ -52,10 +52,14 @@ function setup() {
   // Create platforms (floor + steps)
   platforms = [
     { x: 0, y: floorY3, w: width, h: height - floorY3 }, // floor
-    { x: 120, y: floorY3 - 70, w: 120, h: 12 }, // low step
-    { x: 300, y: floorY3 - 120, w: 90, h: 12 }, // mid step
-    { x: 440, y: floorY3 - 180, w: 130, h: 12 }, // high step
-    { x: 520, y: floorY3 - 70, w: 90, h: 12 }, // return ramp
+    { x: 80, y: floorY3 - 200, w: 80, h: 4 }, // low step
+    { x: 280, y: floorY3 - 180, w: 80, h: 8 }, // mid step
+    { x: 440, y: floorY3 - 200, w: 120, h: 4 }, // high step
+    { x: 80, y: floorY3 - 120, w: 120, h: 4 }, // low step
+    { x: 280, y: floorY3 - 80, w: 80, h: 4 }, // mid step
+    { x: 440, y: floorY3 - 120, w: 80, h: 8 }, // high step
+    { x: 160, y: floorY3 - 280, w: 80, h: 4 }, // mid step
+    { x: 340, y: floorY3 - 280, w: 120, h: 8 }, // high step
   ];
 
   // Start the blob resting on the floor
@@ -63,10 +67,10 @@ function setup() {
 }
 
 function draw() {
-  background(240);
+  background(255, 20, 20);
 
   // --- Draw all platforms ---
-  fill(200);
+  fill(207, 255, 4);
   for (const p of platforms) {
     rect(p.x, p.y, p.w, p.h);
   }
@@ -154,7 +158,7 @@ function overlap(a, b) {
 
 // Draws the blob using Perlin noise for a soft, breathing effect
 function drawBlobCircle(b) {
-  fill(20, 120, 255);
+  fill(255, 207, 0);
   beginShape();
 
   for (let i = 0; i < b.points; i++) {
