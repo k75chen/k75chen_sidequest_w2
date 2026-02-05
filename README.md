@@ -8,6 +8,8 @@ GBDA302 Week 2 Example 3: Anxious Blob
 
 Karen Cochrane and David Han
 
+Editor: Katherine Chen
+
 ---
 
 ## Description
